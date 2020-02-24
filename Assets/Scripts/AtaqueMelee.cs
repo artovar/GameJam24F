@@ -26,6 +26,7 @@ public class AtaqueMelee : MonoBehaviour
     void attack() {
         //animacion
         animator.SetTrigger("Attack");
+        animator.SetBool("estaAtacando", true);
         //detectar enemigos
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position,attackRange,enemyLayers);
 
