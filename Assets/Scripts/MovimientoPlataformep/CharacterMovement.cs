@@ -16,7 +16,6 @@ public class CharacterMovement : MonoBehaviour
 
     public Rigidbody2D rb;
     public Animator anim;
-
     //Raycasts
     private Vector3 rightOrigin;
     private Vector3 leftOrigin;
@@ -60,6 +59,7 @@ public class CharacterMovement : MonoBehaviour
     void Move()
     {
         float movement = Input.GetAxisRaw("Horizontal");
+        anim.SetFloat("VelX", movement);
         if (movement > 0)
         {
             transform.Translate(new Vector3(walkSpeed * Time.deltaTime * movement, 0, 0));
