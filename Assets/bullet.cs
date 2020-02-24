@@ -11,5 +11,8 @@ public class bullet : MonoBehaviour
     {
         rb.velocity = transform.right * speed;
     }
-
+    void OnTriggerEnter2D()
+    {
+        Destroy(gameObject);
+    }
 } 
