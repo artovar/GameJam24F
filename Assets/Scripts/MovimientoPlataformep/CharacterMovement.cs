@@ -12,10 +12,11 @@ public class CharacterMovement : MonoBehaviour {
     [Header("Jumping")]
     public float jumpForce = 5f;
     public bool isGrounded = true;
-
+    public Vector2 movimiento;
     public Rigidbody2D rb;
 
     //Raycasts
+    public GameObject projectile;
     private Vector3 rightOrigin;
     private Vector3 leftOrigin;
     public float width;
@@ -25,17 +26,20 @@ public class CharacterMovement : MonoBehaviour {
     private bool IsDying;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         IsDying = false;
-        Ground = 1 << LayerMask.NameToLayer("Ground");
+        //Ground = 1 << LayerMask.NameToLayer("Ground");
     }
 
 
     // Update is called once per frame
-    void Update ()
+    void Update()
     {
+        //movimiento = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        if (Input.GetKeyDown(KeyCode.UpArrow)) { Jump(); }
+        
         if (IsDying) return;
         IsGrounded();
     }
@@ -46,14 +50,16 @@ public class CharacterMovement : MonoBehaviour {
     */
     private void LateUpdate()
     {
-       
+
     }
 
     private void FixedUpdate()
     {
         if (IsDying) return;
+
         Move();
-        if (Input.GetButton("Jump")) Jump();
+
+
     }
 
     void Move()
@@ -61,41 +67,44 @@ public class CharacterMovement : MonoBehaviour {
         float movement = Input.GetAxisRaw("Horizontal");
         if (movement > 0)
         {
-            transform.Translate(new Vector3(walkSpeed * Time.deltaTime * movement, 0, 0));
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, 1);
+            transform.Translate(new Vector2(walkSpeed * Time.deltaTime * movement, 0));
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            //transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, 1);
         }
         else if (movement < 0)
         {
-            transform.Translate(new Vector3(walkSpeed * Time.deltaTime * movement, 0, 0));
-            transform.localScale = new Vector3(-1 * Mathf.Abs(transform.localScale.x), transform.localScale.y, 1);
+            transform.Translate(new Vector2(walkSpeed * Time.deltaTime * movement * -1, 0));
+            //transform.eulerAngles.y = 180;
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            //transform.localScale = new Vector3(-1 * Mathf.Abs(transform.localScale.x), transform.localScale.y, 1);
         }
-        
+
     }
 
-    void MoveForces()
+    void MoveForces(/*Vector2 direction*/)
     {
+        //rb.velocity = walkSpeed * direction;
+        //rb.MovePosition((Vector2)transform.position + (direction * walkSpeed * Time.deltaTime));
         float movement = Input.GetAxisRaw("Horizontal");
         if (movement > 0)
         {
             rb.velocity = new Vector2(walkSpeed * movement, rb.velocity.y);
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, 1);
+            
+            //transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, 1);
         }
         else if (movement < 0)
         {
+           
             rb.velocity = new Vector2(walkSpeed * movement, rb.velocity.y);
-            transform.localScale = new Vector3(-1 * Mathf.Abs(transform.localScale.x), transform.localScale.y, 1);
+            //transform.localScale = new Vector3(-1 * Mathf.Abs(transform.localScale.x), transform.localScale.y, 1);
         }
-        
-    }
 
+    }
+   
     void Jump()
-    {
-        if (isGrounded)
-        {
+    {   
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-            isGrounded = false;
-        }
     }
 
     /*
