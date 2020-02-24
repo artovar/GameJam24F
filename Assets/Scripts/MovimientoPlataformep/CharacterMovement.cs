@@ -101,7 +101,7 @@ public class CharacterMovement : MonoBehaviour
             rb.velocity = new Vector2(walkSpeed * movement, rb.velocity.y);
             transform.localScale = new Vector3(-1 * Mathf.Abs(transform.localScale.x), transform.localScale.y, 1);
         }
-        anim.SetFloat("VelMovimiento", Mathf.Abs(movement));
+        anim.SetFloat("velY", Mathf.Abs(movement));
 
     }
 
