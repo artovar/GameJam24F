@@ -15,7 +15,6 @@ public class CharacterMovement : MonoBehaviour
     public bool isGrounded = true;
 
     public Rigidbody2D rb;
-    Animator anim;
     public Animator anim;
     //Raycasts
     private Vector3 rightOrigin;
