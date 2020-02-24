@@ -7,6 +7,8 @@ public class AtaqueMelee : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
+
+    public bool enemyHitted;
     
     
     public Animator animator;
@@ -30,6 +32,8 @@ public class AtaqueMelee : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies) 
         {
             Debug.Log("HIT");
+            enemyHitted = true;
         }
+        enemyHitted = false;
     }
 }

@@ -15,8 +15,7 @@ public class CharacterMovement : MonoBehaviour
     public bool isGrounded = true;
 
     public Rigidbody2D rb;
-    public Animator anim;
-
+    Animator anim;
     //Raycasts
     private Vector3 rightOrigin;
     private Vector3 leftOrigin;
@@ -60,6 +59,8 @@ public class CharacterMovement : MonoBehaviour
     void Move()
     {
         float movement = Input.GetAxisRaw("Horizontal");
+        anim.SetFloat("velX", Mathf.Abs(movement));
+
         if (movement > 0)
         {
             transform.Translate(new Vector3(walkSpeed * Time.deltaTime * movement, 0, 0));
