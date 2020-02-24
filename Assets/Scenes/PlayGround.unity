@@ -190,7 +190,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!212 &87775080
 SpriteRenderer:
@@ -309,7 +309,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.052939415, y: -0.35292673}
+  m_Offset: {x: -0.043583453, y: -0.32485795}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -320,7 +320,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.6627727, y: 2.6274796}
+  m_Size: {x: 3.671403, y: 2.6234975}
   m_EdgeRadius: 0
 --- !u!114 &87775085
 MonoBehaviour:
@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 279372562}
-  attackRange: 3
+  attackRange: 5
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
@@ -591,7 +591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouchingGround: 0
-  speed: 5
+  speed: 0
   jumpSpeed: 5
   enemyGroundCheckPoint: {fileID: 1177149495}
   groundLayer:
@@ -3034,7 +3034,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1608236347}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.14325643, y: 0.23797119, z: -11.6901}
+  m_LocalPosition: {x: 0.94, y: 0.14, z: -11.6901}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 87775081}

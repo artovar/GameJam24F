@@ -114,6 +114,9 @@ public class IAController1 : MonoBehaviour
         if ((other.tag == "Player") && thebossAttack.enemyHitted)
         {
             Destroy(gameObject);
+        } else
+        {
+            thebossAttack.enemyHitted = false;
         }
     }
 }
