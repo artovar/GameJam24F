@@ -13,6 +13,9 @@ public class IAController1 : MonoBehaviour
     public LayerMask groundLayer;
     public LayerMask playerLayer;
 
+    public AudioClip death;
+
+
     private Vector2 groundCheckPointA;
     private Vector2 groundCheckPointB;
 
@@ -32,6 +35,8 @@ public class IAController1 : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
+        death = GetComponent<AudioClip>();
+        
         //GJ
         theboss = FindObjectOfType<CharacterMovement>();
         myjumppoint = FindObjectOfType<jumppointController>();
@@ -112,7 +117,14 @@ public class IAController1 : MonoBehaviour
     {
         if (other.tag == "Player" && thebossAttack.enemyHitted)
         {
-            Destroy(gameObject);
+
+            AudioSource.PlayClipAtPoint(death,transform.position);
+            Invoke("Death",1f);
         }
+    }
+
+    void Death()
+    {
+        Destroy(gameObject);
     }
 }
