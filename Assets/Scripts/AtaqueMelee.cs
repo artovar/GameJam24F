@@ -68,6 +68,6 @@ public class AtaqueMelee : MonoBehaviour
     void resetValues () {
         //animacion
         estaAtac = false;
-        animator.SetBool("estaAtacando", false)
+        animator.SetBool("estaAtacando", false);
     }
 }
