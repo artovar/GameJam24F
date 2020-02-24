@@ -19,7 +19,7 @@ public class IAController1 : MonoBehaviour
 
     //GJ
     public CharacterMovement theboss;
-    //public jumppointController myjumppoint; VACIO
+    public jumppointController myjumppoint;
     public bool salto;
     public bool isEnemyNear;
     public bool descansando;
@@ -31,7 +31,7 @@ public class IAController1 : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         //GJ
         theboss = FindObjectOfType<CharacterMovement>();
-        //myjumppoint = FindObjectOfType<jumppointController>(); VACIO
+        myjumppoint = FindObjectOfType<jumppointController>();
     }
 
     // Update is called once per frame
@@ -62,12 +62,12 @@ public class IAController1 : MonoBehaviour
 
             //jump
             //GJ
-            //salto = (int)transform.position.x == (int)myjumppoint.transform.position.x;
-            if (false && isTouchingGround)
+            salto = (int)transform.position.x == (int)myjumppoint.transform.position.x;
+            if (salto && isTouchingGround)
             {
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
             }
-            else if (((transform.position.x < 6f) || (transform.position.x > 41f)) && isTouchingGround && (Random.Range(0.0f, 1.0f) < 0.008f))
+            else if (((transform.position.x < 0.03f) || (transform.position.x > 10.02f)) && isTouchingGround && (Random.Range(0.0f, 1.0f) < 0.008f))
             {
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
             }
@@ -79,7 +79,7 @@ public class IAController1 : MonoBehaviour
 
         //attack
         //GJ
-        if ((int)transform.position.x == (int)theboss.transform.position.x)
+        if (((int)transform.position.x + 1) == (int)theboss.transform.position.x)
         {
             isEnemyNear = true;
         }
@@ -95,6 +95,12 @@ public class IAController1 : MonoBehaviour
             descansando = true;
             StartCoroutine("DescansandoCoroutine");
         }
+
+        //animator conditions
+        myAnimator.SetFloat("Speed", Mathf.Abs(rigidBody.velocity.x));
+        myAnimator.SetBool("OnGround", isTouchingGround);
+        //GJ
+        myAnimator.SetBool("OnAttack", isEnemyNear);
     }
 
     //descansa
