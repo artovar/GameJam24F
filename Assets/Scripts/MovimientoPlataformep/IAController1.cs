@@ -34,6 +34,7 @@ public class IAController1 : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         //GJ
         theboss = FindObjectOfType<CharacterMovement>();
+        thebossAttack = FindObjectOfType<AtaqueMelee>();
         myjumppoint = FindObjectOfType<jumppointController>();
     }
 
@@ -70,7 +71,7 @@ public class IAController1 : MonoBehaviour
             {
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
             }
-            else if (((transform.position.x < 0.03f) || (transform.position.x > 10.02f)) && isTouchingGround && (Random.Range(0.0f, 1.0f) < 0.008f))
+            else if (((transform.position.x < -0.98f) || (transform.position.x > 8.05f)) && isTouchingGround && (Random.Range(0.0f, 1.0f) < 0.008f))
             {
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpSpeed);
             }
@@ -110,7 +111,7 @@ public class IAController1 : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player" && thebossAttack.enemyHitted)
+        if ((other.tag == "Player") && thebossAttack.enemyHitted)
         {
             Destroy(gameObject);
         }

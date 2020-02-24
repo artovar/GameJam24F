@@ -34,6 +34,5 @@ public class AtaqueMelee : MonoBehaviour
             Debug.Log("HIT");
             enemyHitted = true;
         }
-        enemyHitted = false;
     }
 }
