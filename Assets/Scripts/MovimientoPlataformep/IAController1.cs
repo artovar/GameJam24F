@@ -13,6 +13,8 @@ public class IAController1 : MonoBehaviour
     public LayerMask groundLayer;
     public LayerMask playerLayer;
 
+    public int contadorRondas = 1;
+
     public AudioClip death;
 
 
@@ -125,6 +127,6 @@ public class IAController1 : MonoBehaviour
 
     void Death()
     {
-        Destroy(gameObject);
+        
     }
 }

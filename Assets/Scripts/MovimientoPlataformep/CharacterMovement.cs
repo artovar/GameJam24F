@@ -13,6 +13,7 @@ public class CharacterMovement : MonoBehaviour
     [Header("Jumping")]
     public float jumpForce = 5f;
     public bool isGrounded = true;
+    public int vida = 6;
 
     public Rigidbody2D rb;
     Animator anim;
@@ -31,6 +32,7 @@ public class CharacterMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
         IsDying = false;
         Ground = 1 << LayerMask.NameToLayer("Ground");
     }
@@ -122,7 +124,10 @@ public class CharacterMovement : MonoBehaviour
     void KillPlayer()
     {
         IsDying = true;
-        Invoke("Respawn", 1f);
+        vida = vida - (1 / 6);
+
+        if (vida==0) Invoke("Respawn", 1f);
+        else IsDying = false;
     }
 
     void Respawn()
@@ -138,6 +143,7 @@ public class CharacterMovement : MonoBehaviour
             KillPlayer();
         }
     }
+
 
     
 
