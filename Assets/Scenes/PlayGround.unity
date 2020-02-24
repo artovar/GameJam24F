@@ -268,7 +268,9 @@ MonoBehaviour:
   walkSpeed: 1
   jumpForce: 5
   isGrounded: 1
+  movimiento: {x: 0, y: 0}
   rb: {fileID: 0}
+  projectile: {fileID: 0}
   width: 0
   heigth: 0
   RayLength: 0.1
@@ -302,6 +304,7 @@ GameObject:
   - component: {fileID: 273306289}
   - component: {fileID: 273306291}
   - component: {fileID: 273306290}
+  - component: {fileID: 273306292}
   m_Layer: 0
   m_Name: HeroEnemy
   m_TagString: Untagged
@@ -317,7 +320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 273306288}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.13, y: -2.99, z: 0}
+  m_LocalPosition: {x: -2.13, y: -2.982, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2140230250}
@@ -393,6 +396,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &273306292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273306288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97455d93e18909c408c1b67df6c83e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isMoving: 0
+  isAttacking: 0
+  isGrounded: 1
+  isFalling: 0
+  isJumping: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
