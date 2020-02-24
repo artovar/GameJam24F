@@ -11,6 +11,7 @@ public class IAController1 : MonoBehaviour
     private Rigidbody2D rigidBody;
     public Transform enemyGroundCheckPoint;
     public LayerMask groundLayer;
+    public LayerMask playerLayer;
 
     private Vector2 groundCheckPointA;
     private Vector2 groundCheckPointB;
@@ -23,6 +24,7 @@ public class IAController1 : MonoBehaviour
     public bool salto;
     public bool isEnemyNear;
     public bool descansando;
+    public float enemyAttackRange = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -79,14 +81,7 @@ public class IAController1 : MonoBehaviour
 
         //attack
         //GJ
-        if (((int)transform.position.x + 1) == (int)theboss.transform.position.x)
-        {
-            isEnemyNear = true;
-        }
-        else
-        {
-            isEnemyNear = false;
-        }
+        isEnemyNear = Physics2D.OverlapCircle(enemyGroundCheckPoint.position, enemyAttackRange, playerLayer);
 
         //descansa
         //GJ
@@ -110,5 +105,13 @@ public class IAController1 : MonoBehaviour
         rigidBody.velocity = new Vector2(0, rigidBody.velocity.y);
         yield return new WaitForSeconds(0.8f);
         descansando = false;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            Destroy(gameObject);
+        }
     }
 }
