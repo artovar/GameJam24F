@@ -114,10 +114,6 @@ public class CharacterMovement : MonoBehaviour
         RaycastHit2D rightRay = Physics2D.Raycast(rightOrigin, -Vector3.up, RayLength, Ground);
         RaycastHit2D leftRay = Physics2D.Raycast(leftOrigin, -Vector3.up, RayLength, Ground);
 
-        Debug.DrawLine(rightOrigin, rightOrigin + -Vector3.up * RayLength, Color.red);
-        Debug.DrawLine(leftOrigin, leftOrigin + -Vector3.up * RayLength, Color.red);
-
-
         isGrounded = rightRay.collider != null || leftRay.collider != null;
     }
 
