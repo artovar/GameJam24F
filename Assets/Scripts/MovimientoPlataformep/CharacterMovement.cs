@@ -16,7 +16,7 @@ public class CharacterMovement : MonoBehaviour
 
     public Rigidbody2D rb;
     Animator anim;
-
+    public Animator anim;
     //Raycasts
     private Vector3 rightOrigin;
     private Vector3 leftOrigin;
@@ -26,10 +26,12 @@ public class CharacterMovement : MonoBehaviour
     public float RayLength = 2f;
     private bool IsDying;
 
+
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         IsDying = false;
         Ground = 1 << LayerMask.NameToLayer("Ground");
     }
@@ -46,10 +48,7 @@ public class CharacterMovement : MonoBehaviour
      *  LateUpdate is called at the end of Update(). 
      *  Useful for camera scripts, animations, etc, which need to keep tracks of other elements.
     */
-    private void LateUpdate()
-    {
-
-    }
+   
 
     private void FixedUpdate()
     {
@@ -139,4 +138,8 @@ public class CharacterMovement : MonoBehaviour
             KillPlayer();
         }
     }
+
+    
+
+
 }
