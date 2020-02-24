@@ -23,7 +23,7 @@ public class CharacterMovement : MonoBehaviour
     public float heigth;
     LayerMask Ground;
     public float RayLength = 2f;
-    private bool IsDying;
+    private bool IsDying;   
 
 
     // Use this for initialization
