@@ -4,41 +4,70 @@ using UnityEngine;
 
 public class AtaqueMelee : MonoBehaviour
 {
-    public Transform attackPoint;
+    //public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     float at = 0f;
+    bool estaAtac = false;
 
     public bool enemyHitted;
     
     
-    public Animator animator;
+    Animator animator;
     // Start is called before the first frame update
     
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F)) 
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            attack();
-            at = at + 0.01f;
+            animator.SetBool("estaAtacando", true);
+            estaAtac = true;
+            StartCoroutine(Attack());
+            at = 0f;
+        }
+        
+    }
+
+    private void FixedUpdate()
+    {
+        Haddleattack();
+        resetValues();
+    }
+
+    private void Haddleattack()
+    {
+        if (estaAtac)
+        {
+            animator.SetTrigger("attack");
         }
     }
-    void attack() {
-        //animacion
-        animator.SetTrigger("Attack");
-        animator.SetBool("estaAtacando", true);
-        animator.SetFloat("ataque", at);
 
-        //detectar enemigos
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position,attackRange,enemyLayers);
-
-        foreach (Collider2D enemy in hitEnemies) 
+    IEnumerator Attack() {
+        
+        while (at < 1f)
         {
-            Debug.Log("HIT");
-            enemyHitted = true;
+            animator.SetFloat("ataque", at);
+            yield return new WaitForEndOfFrame();
+            at += 0.000001f;
         }
-        enemyHitted = false;
+        //detectar enemigos
+        // Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        /*
+         foreach (Collider2D enemy in hitEnemies)
+         {
+             Debug.Log("HIT");
+             enemyHitted = true;
+         }
+         enemyHitted = false;
+         StopCoroutine(Attack());*/
+    }
+
+
+    void resetValues () {
+        //animacion
+        estaAtac = false;
+        animator.SetBool("estaAtacando", false)
     }
 }
