@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class IAController1 : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public bool isMoving = false;
+    public bool isAttacking = false;
+    public bool isGrounded = true;
+    public bool isFalling = false;
+    public bool isJumping = false;
+
 
     // Update is called once per frame
     void Update()
