@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 87775083}
   - component: {fileID: 87775082}
   - component: {fileID: 87775084}
+  - component: {fileID: 87775085}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -306,19 +307,38 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.07058573, y: -0.35292673}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.71875, y: 1.875}
-    newSize: {x: 0.71875, y: 1.875}
+    oldSize: {x: 3.3333333, y: 3.3333333}
+    newSize: {x: 4, y: 3}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.71875, y: 1.875}
+  m_Size: {x: 2.6245532, y: 2.5808535}
   m_EdgeRadius: 0
+--- !u!114 &87775085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87775077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e961a356a8a83409a30da2f23fd650, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPoint: {fileID: 0}
+  attackRange: 0.5
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 512
+  enemyHitted: 0
+  animator: {fileID: 0}
 --- !u!1 &273306288
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,6 +515,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   theboss: {fileID: 0}
+  thebossAttack: {fileID: 0}
   myjumppoint: {fileID: 0}
   salto: 0
   isEnemyNear: 0
