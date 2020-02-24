@@ -32,6 +32,16 @@ public class aguila : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        aguilaBody.velocity = new Vector2(Time.deltaTime * vel, aguilaBody.velocity.y);
+        //movimiento
+        if (transform.position.x < 0) //rigth
+        {
+            aguilaBody.velocity = new Vector2(0.7f * vel, 0);
+            Voltear();
+        }
+        else 
+        {
+            aguilaBody.velocity = new Vector2(0.7f * vel, 0);
+            Voltear();
+        }
     }
 }
