@@ -24,7 +24,14 @@ public class CharacterMovement : MonoBehaviour
     public float heigth;
     LayerMask Ground;
     public float RayLength = 2f;
-    private bool IsDying;   
+    private bool IsDying;
+
+
+
+    bool enSuelo = false;
+    float ComprobarRadioSuelo = 0.2f;
+    public LayerMask CapaSuelo; //elegimos la capa donde pisa
+    public Transform comprobarSuelo; //Mira si esta en el suelo
 
 
     // Use this for initialization
@@ -43,6 +50,11 @@ public class CharacterMovement : MonoBehaviour
     {
         if (IsDying) return;
         IsGrounded();
+
+        //Saltar 
+
+        enSuelo = Physics2D.OverlapCircle(comprobarSuelo.position, ComprobarRadioSuelo, CapaSuelo);
+        anim.SetBool("estaSuelo", enSuelo); //cambia la variable estaSuelo
     }
 
     /*
@@ -89,6 +101,7 @@ public class CharacterMovement : MonoBehaviour
             rb.velocity = new Vector2(walkSpeed * movement, rb.velocity.y);
             transform.localScale = new Vector3(-1 * Mathf.Abs(transform.localScale.x), transform.localScale.y, 1);
         }
+        anim.SetFloat("VelMovimiento", Mathf.Abs(movement));
 
     }
 
@@ -96,9 +109,12 @@ public class CharacterMovement : MonoBehaviour
     {
         if (isGrounded)
         {
+            anim.SetBool("estaSuelo", false);
             rb.velocity = new Vector2(rb.velocity.x, 0);
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isGrounded = false;
+            enSuelo = false;
+
         }
     }
 
