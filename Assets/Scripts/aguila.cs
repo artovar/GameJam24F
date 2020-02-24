@@ -6,9 +6,10 @@ public class aguila : MonoBehaviour
 {
     //Variables
     Animator anim;
-    bool girar = true;
     SpriteRenderer aguilaRender;
     Rigidbody2D aguilaBody;
+
+    bool girar = true;
     public float vel = 3f;
 
     //Funciones -----------------------------------------
@@ -33,14 +34,14 @@ public class aguila : MonoBehaviour
     void Update()
     {
         //movimiento
-        if (transform.position.x < 0) //rigth
+        if (transform.position.x < 0 && !girar) //rigth
         {
             aguilaBody.velocity = new Vector2(0.7f * vel, 0);
             Voltear();
         }
-        else 
+        else if (transform.position.x > 0 && girar)
         {
-            aguilaBody.velocity = new Vector2(0.7f * vel, 0);
+            aguilaBody.velocity = new Vector2(-0.7f * vel, 0);
             Voltear();
         }
     }
